@@ -36,7 +36,7 @@ int main()
     QueueType q;
     printM();
     scanf("%d",&x);
-    do
+    switch(x)
     {
     case 1:
         if(!QueueFull(q))
