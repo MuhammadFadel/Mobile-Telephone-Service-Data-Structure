@@ -7,14 +7,14 @@ void CreateQueue(QueueType *q)
     q->front= NULL;
     q->rear = NULL;
 }
-int QueueEmpty(QueueType q)
+int QueueEmpty(QueueType *q)
 {
 //Pre: The queue is initialized.
 //Post: If the queue is empty (1) is returned. Otherwise (0) is returned.
 
     return (q->front == NULL);
 }
-int QueueFull(QueueType q)
+int QueueFull(QueueType *q)
 {
 //Pre: The queue is initialized.
 //post: If the queue is full (1) is returned. Otherwise (0) is returned.
@@ -25,9 +25,10 @@ void Enqueue(QueueEntry item, QueueType *q)
 {
 //Pre: The queue is initialized  and is not full.
 //Post: Item is added to the end of the stack.
+    Node *p = (Node *)malloc(sizeof(Node));
     if(p->Entry[q->rear]->l.c='E')
     {
-        Node *p = (Node *)malloc(sizeof(Node));
+       
         p->Entry[q->rear]=item;
         p-> next = NULL;
         if (!q->rear)
@@ -42,7 +43,7 @@ void Enqueue(QueueEntry item, QueueType *q)
     }
     if(p->Entry[q->rear]->l.c='V')
     {
-        Node *p = (Node *)malloc(sizeof(Node));
+        
         p->Entry[q->rear]=item;
         p-> next = NULL;
         if (!q->rear)
@@ -56,10 +57,10 @@ void Enqueue(QueueEntry item, QueueType *q)
 
         }
     }
-    if(p->Entry[q->rear]->l.c='D') {}
-    Node *p = (Node *)malloc(sizeof(Node));
+    if(p->Entry[q->rear]->l.c='D') {
+    
     p->Entry[q->rear]=item;
-    p-> next = NULL;
+    p-> next = NULL;}
     if (!q->rear)
         q->front = p;
     else
@@ -71,7 +72,7 @@ void dequeue (QueueEntry *item, QueueType *q)
 //Pre: The Queue is initialized  and is not empty.
 //Post: The front element of the Queue is removed from it and is assigned to item.
 
-    *item = q->front->entry[q->front];
+    *item = q->front->Entry[q->front];
     Node *p = q->front;
     q-> front=q->front->next;
     free(p);
